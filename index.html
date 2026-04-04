@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimbu | Cinematic Visuals</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Plus+Jakarta+Sans:wght@500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #0D0E0F;
+            --card-bg: #161718;
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #FFFFFF;
+            --text-dim: #94A3B8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-image: radial-gradient(circle at top right, #1a1b1c, transparent);
+            background-attachment: fixed;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(13, 14, 15, 0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 2rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-links a:hover { color: var(--text-main); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 1.5rem 4rem;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 8rem;
+        }
+
+        .profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -3px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cta-main {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 1.2rem 3.5rem;
+            border-radius: 12px;
+            font-weight: 800;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+        }
+
+        /* Portfolio Grids */
+        section { margin-bottom: 10rem; }
+        h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+            letter-spacing: -1px;
+        }
+
+        .video-box {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #000;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .video-box iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            cursor: zoom-in; /* Indicates it can be expanded */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* LIGHTBOX SYSTEM */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            object-fit: contain; /* Shows full image */
+        }
+
+        /* Pricing */
+        .price-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            overflow: hidden;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .price-label { font-size: 1.1rem; color: #fff; }
+        .price-amount { text-align: right; }
+        .usd { font-weight: 800; font-size: 1.3rem; display: block; }
+        .inr { color: var(--text-dim); font-size: 0.9rem; }
+
+        .price-footer {
+            padding: 2rem;
+            background: rgba(0,0,0,0.2);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Social Buttons */
+        .social-flex {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            font-size: 1.6rem;
+            transition: all 0.3s;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .social-btn:hover { transform: translateY(-5px); }
+        .discord:hover { background: #5865F2; }
+        .instagram:hover { background: #E1306C; }
+        .reddit:hover { background: #FF4500; }
+        .paypal:hover { background: #003087; }
+
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .price-row { flex-direction: column; text-align: center; gap: 1rem; }
+            .price-amount { text-align: center; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Lightbox Overlay -->
+<div id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" alt="Full View">
+</div>
+
+<nav>
+    <div class="nav-content">
+        <div style="font-weight: 800; letter-spacing: 2px;">NIMBU</div>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#art">Art</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- Hero -->
+    <header class="hero">
+        <img src="profile.webp" alt="Nimbu" class="profile-pic">
+        <h1>Nimbu</h1>
+        <p>Independent artist and animator focused on high-depth cinematic visuals and atmospheric character art.</p>
+        <a href="https://discord.com/users/1098809405388099586" target="_blank" class="cta-main">Hire Me / Collab</a>
+    </header>
+
+    <!-- Client Work -->
+    <section id="work">
+        <h2>Client Work</h2>
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/Xq1ZKhNY20k" allowfullscreen></iframe>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="clientwork1.webp" alt="Work 1"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="clientwork2.webp" alt="Work 2"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="clientwork3.webp" alt="Work 3"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="clientwork4.webp" alt="Work 4"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="clientwork5.webp" alt="Work 5"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="clientwork6.webp" alt="Work 6"></div>
+        </div>
+    </section>
+
+    <!-- Artworks -->
+    <section id="art">
+        <h2>Artworks</h2>
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/uNmxVxzBslA" allowfullscreen></iframe>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="artwork1.webp" alt="Art 1"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="artwork2.webp" alt="Art 2"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="artwork3.webp" alt="Art 3"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="artwork4.webp" alt="Art 4"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="artwork5.webp" alt="Art 5"></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><img src="artwork6.webp" alt="Art 6"></div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+        <h2>Pricing & Services</h2>
+        <div class="price-card">
+            <div class="price-row">
+                <div class="price-label">Simple Bust / Short Animated Loop (2-4s)</div>
+                <div class="price-amount">
+                    <span class="usd">$2 — $4</span>
+                    <span class="inr">Rs. 200 — 400</span>
+                </div>
+            </div>
+            <div class="price-row">
+                <div class="price-label">Stylized Art / Clean Animation with Simple BG (5-8s)</div>
+                <div class="price-amount">
+                    <span class="usd">$5 — $8</span>
+                    <span class="inr">Rs. 500 — 800</span>
+                </div>
+            </div>
+            <div class="price-row">
+                <div class="price-label">Half Body / Depthful Animation with 3D BG (9-15s)</div>
+                <div class="price-amount">
+                    <span class="usd">$11 — $16</span>
+                    <span class="inr">Rs. 1000 — 1500</span>
+                </div>
+            </div>
+            <div class="price-row" style="border: none;">
+                <div class="price-label">Full Illustrated Scene / Complete Cinematic Animation</div>
+                <div class="price-amount">
+                    <span class="usd">$22 — $30</span>
+                    <span class="inr">Rs. 2000 — 2800</span>
+                </div>
+            </div>
+            <div class="price-footer">
+                <strong>Extras:</strong> + $5 per additional character • + $5 Rush Fee (< 48h) • + 5% per revision after first two.
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="text-align: center;">
+        <h2>Let's Create</h2>
+        <p style="color: var(--text-dim);">Available for commissions and collaborations.</p>
+        
+        <div class="social-flex">
+            <a href="https://discord.com/users/1098809405388099586" target="_blank" class="social-btn discord" title="Discord">
+                <i class="fa-brands fa-discord"></i>
+            </a>
+            <a href="https://www.instagram.com/nim.bustudio/" target="_blank" class="social-btn instagram" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.reddit.com/u/Small_Sale6329/" target="_blank" class="social-btn reddit" title="Reddit">
+                <i class="fa-brands fa-reddit-alien"></i>
+            </a>
+            <a href="https://www.paypal.com/paypalme/YagyaSingh" target="_blank" class="social-btn paypal" title="PayPal">
+                <i class="fa-brands fa-paypal"></i>
+            </a>
+        </div>
+        
+        <p style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px;">
+            UPI ACCEPTED • PAYPAL FOR INTERNATIONAL
+        </p>
+    </section>
+
+</div>
+
+<script>
+    function openLightbox(element) {
+        const img = element.querySelector('img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+    }
+</script>
+
+</body>
+</html>
