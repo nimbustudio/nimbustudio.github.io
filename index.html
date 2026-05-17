@@ -254,15 +254,46 @@
         .reddit:hover { background: #FF4500; }
         .paypal:hover { background: #003087; }
 
-        @media (max-width: 768px) {
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .price-row { flex-direction: column; text-align: center; gap: 1rem; }
-            .price-amount { text-align: center; }
-            .nav-links {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    scrollbar-width: none;
+       @media (max-width: 768px) {
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .price-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .price-amount {
+        text-align: center;
+    }
+
+    .nav-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        width: 100%;
+        justify-content: flex-start;
+        padding-bottom: 0.3rem;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        white-space: nowrap;
+        margin-left: 0;
+        font-size: 0.75rem;
+    }
 }
 
 .nav-links::-webkit-scrollbar {
