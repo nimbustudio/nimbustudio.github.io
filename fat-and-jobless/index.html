@@ -1,70 +1,350 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Fat & Jobless</title>
 
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body{
-            background:#0B2E13;
-            color:white;
-            font-family:Arial;
-            text-align:center;
-            margin:0;
-        }
+<title>Fat & Jobless</title>
 
-        .hero{
-            padding:80px;
-        }
+<style>
 
-        h1{
-            font-size:70px;
-        }
+body{
 
-        p{
-            color:#ccc;
-            font-size:22px;
-        }
+margin:0;
+background:#081C15;
+color:#F5F5F5;
+font-family:Arial,Helvetica,sans-serif;
 
-        .button{
+}
 
-            display:inline-block;
-            margin-top:30px;
+.hero{
 
-            background:#ffcb05;
-            color:black;
+padding:80px 20px;
+text-align:center;
 
-            padding:15px 35px;
+}
 
-            text-decoration:none;
+.hero h1{
 
-            border-radius:10px;
+font-size:72px;
+margin-bottom:10px;
 
-            font-weight:bold;
+}
 
-        }
+.subtitle{
 
-    </style>
+color:#8BC34A;
+font-size:22px;
+margin-bottom:30px;
+
+}
+
+.intro{
+
+max-width:850px;
+margin:auto;
+font-size:20px;
+line-height:1.8;
+color:#C8D5C1;
+
+}
+
+.container{
+
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+
+}
+
+.episode-card{
+
+display:flex;
+background:#133122;
+border-radius:18px;
+overflow:hidden;
+margin:35px 0;
+transition:.25s ease;
+
+}
+
+.episode-card:hover{
+
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+.episode-thumb{
+
+width:360px;
+object-fit:cover;
+
+}
+
+.episode-content{
+
+padding:28px;
+
+}
+
+.episode-content h2{
+
+font-size:34px;
+margin-bottom:15px;
+
+}
+
+.episode-content p{
+
+font-size:18px;
+line-height:1.6;
+color:#C8D5C1;
+
+}
+
+.watch-btn{
+
+display:inline-block;
+margin-top:20px;
+padding:14px 28px;
+
+background:#2E7D32;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:12px;
+
+font-weight:bold;
+
+}
+
+.watch-btn:hover{
+
+background:#43A047;
+
+}
+
+.footer{
+
+text-align:center;
+padding:80px 20px;
+color:#8AA69A;
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="hero">
+<section class="hero">
 
 <h1>FAT & JOBLESS</h1>
 
-<p>
-An indie animated comedy by Nimbu Studio.
+<p class="subtitle">
+
+A Nimbu Studio Original
+
 </p>
 
-<a class="button" href="#">
-Watch Episode 1
+<p class="intro">
+
+Fat & Jobless began as a ten-second joke.
+
+What started as a way to escape reality slowly evolved into an animated series documenting procrastination, false hope and the strange comfort of believing tomorrow will somehow fix everything.
+
+The series follows Yagya Singh, a teenager trapped in an endless cycle of fake promises to himself while chasing the dream of becoming an artist.
+
+</p>
+
+</section>
+
+<div class="container">
+
+<div class="episode-card">
+
+<img class="episode-thumb" src="ep1.webp">
+
+<div class="episode-content">
+
+<h2>Episode 1 · Tomorrow</h2>
+
+<p>
+
+A ten-second skit introducing the central idea of the series.
+
+One decision.
+
+One excuse.
+
+One more tomorrow.
+
+</p>
+
+<a class="watch-btn" href="YOUR_EP1_LINK">
+
+▶ Watch Episode
+
 </a>
 
 </div>
 
-</body>
+</div>
 
+<div class="episode-card">
+
+<img class="episode-thumb" src="ep2.webp">
+
+<div class="episode-content">
+
+<h2>Episode 2 · Everything's Fine</h2>
+
+<p>
+
+Yagya Singh is introduced.
+
+His everyday life is filled with procrastination, fake promises and delusive hope until a close friend asks a simple question:
+
+"Everything going alright?"
+
+He lies.
+
+Mostly to himself.
+
+</p>
+
+<a class="watch-btn" href="YOUR_EP2_LINK">
+
+▶ Watch Episode
+
+</a>
+
+</div>
+
+</div>
+
+<div class="episode-card">
+
+<img class="episode-thumb" src="ep3.webp">
+
+<div class="episode-content">
+
+<h2>Episode 3 · Disconnected</h2>
+
+<p>
+
+His mouse breaks.
+
+The internet bill goes unpaid.
+
+Forced to sit alone, he watches everyone else's lives move forward while his own remains stuck.
+
+</p>
+
+<a class="watch-btn" href="YOUR_EP3_LINK">
+
+▶ Watch Episode
+
+</a>
+
+</div>
+
+</div>
+
+<div class="episode-card">
+
+<img class="episode-thumb" src="ep4.webp">
+
+<div class="episode-content">
+
+<h2>Episode 4 · Rome</h2>
+
+<p>
+
+A sudden wave of motivation pushes him to apply for commissions with complete dedication.
+
+After the excitement fades, every application comes back rejected.
+
+</p>
+
+<a class="watch-btn" href="YOUR_EP4_LINK">
+
+▶ Watch Episode
+
+</a>
+
+</div>
+
+</div>
+
+<div class="episode-card">
+
+<img class="episode-thumb" src="ep5.webp">
+
+<div class="episode-content">
+
+<h2>Episode 5 · The Call</h2>
+
+<p>
+
+Ready to quit, Yagya stands still.
+
+Then—
+
+his phone rings.
+
+</p>
+
+<a class="watch-btn" href="YOUR_EP5_LINK">
+
+▶ Watch Episode
+
+</a>
+
+</div>
+
+</div>
+
+<div class="episode-card">
+
+<img class="episode-thumb" src="ep6.webp">
+
+<div class="episode-content">
+
+<h2>Episode 6 · One Last Chance</h2>
+
+<p>
+
+He decides to give life one final attempt.
+
+A client appears.
+
+A fake victory begins.
+
+</p>
+
+<a class="watch-btn" href="YOUR_EP6_LINK">
+
+▶ Watch Episode
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+Made with 🍋 by Nimbu Studio
+
+</div>
+
+</body>
 </html>
