@@ -67,7 +67,7 @@ background:var(--card-bg);
 
 border-radius:18px;
 
-overflow:hidden;
+overflow:clip;
 
 margin:35px 0;
 
@@ -76,14 +76,9 @@ transition:.25s ease;
 }
 
 .episode-thumb{
-
-width:350px;
-height:220px;
-
-object-fit:cover;
-
-flex-shrink:0;
-
+    width:320px;
+    aspect-ratio:16/9;
+    object-fit:cover;
 }
 
 .episode-content{
@@ -96,33 +91,33 @@ min-width:280px;
 
 }
 
-.watch-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.watch-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    padding: 14px 28px;
-    margin-top: 20px;
+    width:100%;
+    max-width:260px;
 
-    background: #3ba63d;
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1rem;
+    padding:16px 24px;
+    margin-top:20px;
 
-    border-radius: 14px;
-    border: none;
+    background:#3ba63d;
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    font-size:1rem;
 
-    width: fit-content;
-    min-width: 230px;
+    border-radius:14px;
+    border:none;
 
-    transition: 0.25s ease;
-    overflow: hidden;
+    box-sizing:border-box;
+    transition:.25s ease;
 }
 
-.watch-btn:hover {
-    background: #47bf4a;
-    transform: translateY(-2px);
+.watch-btn:hover{
+    background:#47bf4a;
+    transform:translateY(-2px);
 }
 
 .footer{
@@ -167,11 +162,8 @@ font-size:16px;
 }
 
 .watch-btn{
-
-width:100%;
-
-text-align:center;
-
+    max-width:none;
+    width:100%;
 }
 
 }
